@@ -9,6 +9,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 
+/*
+* @Valid para salvar e atualizar, ja fazendo tratamento de errors,
+* no ControllerAdvice, aplica o ExceptionHandler na aplicacao BACKEND, onde
+* possui o @Valid
+* */
+
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteController {
@@ -30,7 +36,7 @@ public class ClienteController {
     public Cliente buscarPorId(@PathVariable Integer id){
         return repository
                 .findById(id)
-                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado!"));
     }
 
     @DeleteMapping("{id}")
@@ -42,12 +48,12 @@ public class ClienteController {
                     repository.delete(cliente);
                     return  Void.TYPE;
                 })
-                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado!"));
     }
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Integer id, @RequestBody Cliente clienteAtualizado){
+    public void atualizar(@PathVariable Integer id, @RequestBody @Valid Cliente clienteAtualizado){
         repository
                 .findById(id)
                 .map( cliente -> {
@@ -55,6 +61,6 @@ public class ClienteController {
                     cliente.setCpf(clienteAtualizado.getCpf());
                     return repository.save(clienteAtualizado);
                 })
-                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado!"));
     }
 }
