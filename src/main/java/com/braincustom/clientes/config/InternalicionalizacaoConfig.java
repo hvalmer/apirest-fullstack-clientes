@@ -1,4 +1,4 @@
-package com.braincustom.config;
+package com.braincustom.clientes.config;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

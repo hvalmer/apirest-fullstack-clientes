@@ -1,4 +1,4 @@
-package com.braincustom.model.entity;
+package com.braincustom.clientes.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.braincustom.rest.exception;
+package com.braincustom.clientes.rest.exception;
 
 import lombok.Getter;
 

@@ -1,7 +1,7 @@
-package com.braincustom.rest;
+package com.braincustom.clientes.rest;
 
-import com.braincustom.model.entity.Cliente;
-import com.braincustom.model.repository.ClienteRepository;
+import com.braincustom.clientes.model.repository.ClienteRepository;
+import com.braincustom.clientes.model.entity.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -61,7 +61,8 @@ public class ClienteController {
 
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void atualizar(@PathVariable Integer id, @RequestBody @Valid Cliente clienteAtualizado){
+    public void atualizar(@PathVariable Integer id,
+                          @RequestBody @Valid Cliente clienteAtualizado){
         repository
                 .findById(id)
                 .map( cliente -> {

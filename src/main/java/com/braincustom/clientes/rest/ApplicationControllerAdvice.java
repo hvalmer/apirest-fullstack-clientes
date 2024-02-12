@@ -1,6 +1,6 @@
-package com.braincustom.rest;
+package com.braincustom.clientes.rest;
 
-import com.braincustom.rest.exception.ApiErrors;
+import com.braincustom.clientes.rest.exception.ApiErrors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
