@@ -10,5 +10,5 @@ public class ServicoPrestadoDTO {
     private String descricao;
     private String preco;
     private String data;
-    private String idCliente;
+    private Integer idCliente;
 }
